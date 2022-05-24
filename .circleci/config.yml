@@ -15,9 +15,9 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
       - run:
-        name: run test
-#        command: python --version
-        command: pytest --version
+          name: run test
+#         command: python --version
+          command: pytest --version
 #  sync:
 #    docker:
 #      - image: rclone/rclone
