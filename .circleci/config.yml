@@ -12,11 +12,10 @@ jobs:
       - image: cimg/python:3.10
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
+      - run: python --version
+      - run: pip install pytest
       - run:
           name: run test
-#         command: python --version
           command: pytest --version
 #  sync:
 #    docker:
