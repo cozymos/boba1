@@ -15,7 +15,7 @@ jobs:
       - run: pip install pyyaml flatten-dict
       - run:
           name: run test1
-          command: python test1.py en.yml
+          command: python test1.py locales/en.yml
 #  sync:
 #    docker:
 #      - image: rclone/rclone
