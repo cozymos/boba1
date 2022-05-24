@@ -12,11 +12,10 @@ jobs:
       - image: cimg/python:3.10
     steps:
       - checkout
-      - run: python --version
-      - run: pip install pytest
+      - run: pip install pyyaml flatten-dict
       - run:
-          name: run test
-          command: pytest --version
+          name: run test1
+          command: python test1.py en.yml
 #  sync:
 #    docker:
 #      - image: rclone/rclone
