@@ -25,6 +25,7 @@ jobs:
       - image: cimg/python:3.10
     steps:
       - checkout
+      - run: pip install pyyaml flatten-dict
       - run: python test1.py
 #  sync:
 #    docker:
