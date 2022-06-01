@@ -3,9 +3,12 @@ workflows:
   test1:
     jobs:
       - build
+      - test:
+          requires:
+            - build
 #      - sync:
 #          requires:
-#            - build
+#            - test
 jobs:
   build:
     docker:
@@ -16,6 +19,13 @@ jobs:
       - run:
           name: run main1
           command: python main1.py locales/en1.yml > en2.json
+  test:
+    working_directory: ~/test
+    docker:
+      - image: cimg/python:3.10
+    steps:
+      - checkout
+      - run: python test1.py
 #  sync:
 #    docker:
 #      - image: rclone/rclone
