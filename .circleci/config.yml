@@ -18,7 +18,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run:
           name: run main1
-          command: python main1.py locales/en1.yml > en2.json
+          command: python main1.py locales/en1.yml
   test:
     working_directory: ~/test
     docker:
