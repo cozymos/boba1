@@ -5,8 +5,8 @@
 
 > run commands:
 
-    python3 sc-mr1.py aa.csv > bb.csv
+    python main1.py locales/en1.yml > out.json
 
 > verify results:
 
-    diff aa.csv zz1.csv
+    diff locales/en2.json out.json
