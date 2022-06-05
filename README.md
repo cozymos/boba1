@@ -1,8 +1,7 @@
 
 > install packages:
 
-    pip install pyyaml
-
+    pip install pyyaml flatten-dict
 
 > run commands:
 

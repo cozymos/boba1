@@ -15,7 +15,7 @@ jobs:
       - image: cimg/python:3.10
     steps:
       - checkout
-      - run: pip install pyyaml flatten-dict
+      - run: pip install -r requirements.txt
       - run:
           name: run main1
           command: python main1.py locales/en1.yml > en2.json
@@ -25,7 +25,7 @@ jobs:
       - image: cimg/python:3.10
     steps:
       - checkout
-      - run: pip install pyyaml flatten-dict
+      - run: pip install -r requirements.txt
       - run: python test1.py
 #  sync:
 #    docker:
