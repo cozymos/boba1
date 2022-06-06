@@ -1,40 +1,34 @@
 version: 2.1
 workflows:
-  test1:
+  workflow2:
     jobs:
-      - build
-      - test:
+      - build2
+      - test2:
           requires:
-            - build
-#      - sync:
-#          requires:
-#            - test
+            - build2
 jobs:
-  build:
+  build2:
     docker:
       - image: cimg/python:3.10
     steps:
       - checkout
       - run: pip install -r requirements.txt
       - run: mkdir -p my_workspace
-      - run: python main1.py locales/en1.yml > my_workspace/out.json
+      - run: python build2.py locales/en1.yml > my_workspace/out.json
       - persist_to_workspace:
           root: my_workspace
           paths:
             - out.json
-  test:
+  test2:
     working_directory: ~/test
     docker:
       - image: cimg/python:3.10
     steps:
       - checkout
       - run: pip install -r requirements.txt
-      - run: python test1.py
+      - run: python test2.py
       - attach_workspace:
           at: my_workspace
       - run:
           name: run diff
           command: diff locales/en2.json my_workspace/out.json
-#  sync:
-#    docker:
-#      - image: rclone/rclone
