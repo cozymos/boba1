@@ -18,7 +18,11 @@ jobs:
       - run: pip install -r requirements.txt
       - run:
           name: run main1
-          command: python main1.py locales/en1.yml
+          command: python main1.py locales/en1.yml > my_workspace/out.json
+      - persist_to_workspace:
+        root: my_workspace
+        paths:
+          - out.json
   test:
     working_directory: ~/test
     docker:
@@ -27,6 +31,9 @@ jobs:
       - checkout
       - run: pip install -r requirements.txt
       - run: python test1.py
+      - attach_workspace:
+        at: my_workspace
+      - run: diff locales/en2.json out.json
 #  sync:
 #    docker:
 #      - image: rclone/rclone
