@@ -11,5 +11,5 @@ if __name__ == '__main__':
         res = yaml.safe_load(f)
         kv = flatten(res, reducer='dot')
         print(kv)
-        logging.warning("2+3=", Add(2,3))
+        logging.warning(f"2 + 3 = {Add(2,3)}")
 
