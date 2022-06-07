@@ -5,7 +5,7 @@
 
 > run commands:
 
-    python main1.py locales/en1.yml > out.json
+    python build2.py locales/en1.yml > out.json
 
 > verify results:
 
