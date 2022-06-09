@@ -11,10 +11,12 @@ jobs:
     docker:
       - image: cimg/python:3.10
     steps:
+      - run: echo "pipe [<< pipeline.git.branch >>] << pipeline.git.revision >>"
       - checkout
       - run: pip install -r requirements.txt
       - run: mkdir -p my_workspace
-      - run: python build2.py locales/en1.yml > my_workspace/out.json
+      - run: python build2.py locales/en2.yml 1> my_workspace/out.json
+      - run: echo "job [<< CIRCLE_BRANCH >>] << CIRCLE_SHA1 >>"
       - persist_to_workspace:
           root: my_workspace
           paths:
@@ -26,9 +28,11 @@ jobs:
     steps:
       - checkout
       - run: pip install -r requirements.txt
-      - run: python test2.py
+      - run: python test2.py 2> test2.log
       - attach_workspace:
           at: my_workspace
+      - store_artifacts:
+          path: test2.log
       - run:
           name: run diff
           command: diff locales/en2.json my_workspace/out.json
