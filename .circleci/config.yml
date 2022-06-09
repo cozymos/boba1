@@ -16,7 +16,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: mkdir -p my_workspace
       - run: python build2.py locales/en2.yml 1> my_workspace/out.json
-      - run: echo "job [<< CIRCLE_BRANCH >>] << CIRCLE_SHA1 >>"
+      - run: echo "commit [${CIRCLE_BRANCH}] ${CIRCLE_SHA1}"
       - persist_to_workspace:
           root: my_workspace
           paths:
